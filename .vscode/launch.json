@@ -1,0 +1,47 @@
+// {
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "type": "cortex-debug",
+//             "request": "launch",
+//             "name": "Debug (OpenOCD)",
+//             "servertype": "openocd",
+//             "cwd": "${workspaceRoot}",
+//             "executable": "${workspaceRoot}/build/hellopico.elf",
+//             "serverpath": "openocd",
+//             "configFiles": [
+//                 "interface/cmsis-dap.cfg",
+//                 "target/rp2040.cfg"
+//             ],
+//             //"preLaunchTask": "build"
+//         }
+//     ]
+// }
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Pico Debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${command:cmake.launchTargetPath}",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            // This may need to be arm-none-eabi-gdb depending on your system
+            "gdbPath" : "/usr/bin/gdb-multiarch",
+            "device": "RP2040",
+            "configFiles": [
+                "interface/cmsis-dap.cfg",
+                "target/rp2040.cfg"
+            ],
+            "svdFile": "${env:PICO_SDK_PATH}/src/rp2040/hardware_regs/rp2040.svd",
+            "runToMain": true,
+            // Work around for stopping at main on restart
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ],
+            "searchDir": ["/home/dillon/pico/openocd/tcl"],
+        }
+    ]
+}

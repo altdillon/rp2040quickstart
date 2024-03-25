@@ -1,6 +1,6 @@
 # rp2040quickstart
 ### RP2040 quick start for rp2040 projects.
-Recently I started getting more interested in devloping for the RP2040. This is a quick start project that I made to setup debugging.
+Recently I started getting more interested in devloping for the RP2040. This is a quick start project that I made to setup debugging using the vscode ide.
 
 ### Usefull links:
 [RP2040 C/C++ sdk info](https://www.raspberrypi.com/documentation/pico-sdk/)<br>
